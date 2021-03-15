@@ -1,0 +1,293 @@
+worlds:
+  - world_skyblock
+  - world_forest_1
+  - world_mine_1
+
+fix:
+  item: fixer3
+  bonus: 100
+
+trans:
+  STONE: Đá
+  COAL_ORE: Quặng than
+  REDSTONE_ORE: Quặng đá đỏ
+  LAPIS_ORE: Quặng lưu ly
+  IRON_ORE: Quặng sắt
+  GOLD_ORE: Quặng vàng
+  DIAMOND_ORE: Quặng kim cương
+  EMERALD_ORE: Quặng lục bảo
+  QUARTZ_ORE: Quặng thạch anh
+  NETHER_GOLD_ORE: Quặng vàng nether
+  WHEAT: Lúa
+  SUGAR_CANE: Mía
+  CARROTS: Cà rốt
+  POTATOES: Khoai tây
+  BETROOTS: Củ dền
+  PUMPKIN: Bí ngô
+  MELON: Dưa hấu
+  SWEET_BERRY_BUSH: Quả mọng
+  CACTUS: Xương rồng
+  OAK_LOG: Gỗ sồi
+  OAK_WOOD: Gỗ sồi
+  SPRUCE_LOG: Gỗ vân sam
+  SPRUCE_WOOD: Gỗ vân sam
+  BIRCH_LOG: Gỗ bạch dương
+  BIRCH_WOOD: Gỗ bạch dương
+  JUNGLE_LOG: Gỗ rừng
+  JUNGLE_WOOD: Gỗ rừng
+  ACACIA_LOG: Gỗ xiêm gai
+  ACACIA_WOOD: Gỗ xiêm gai
+  DARK_OAK_LOG: Gỗ sồi sẫm
+  DARK_OAK_WOOD: Gỗ sồi sẫm
+  CRIMSON_STEM: Cuống đỏ thẫm
+  CRIMSON_HYHPAE: Cuống đỏ thẫm
+  WARPED_STEM: Cuống kỳ dị
+  CRIMSON_HYPHAE: Cuống kỳ dị
+
+# Need Shops to work
+# None set >> Default = self
+material:
+  # Ores
+  STONE: stone3
+  COAL_ORE: coal3
+  REDSTONE_ORE: redstone3
+  LAPIS_ORE: lapis3
+  IRON_ORE: ore3
+  GOLD_ORE: gold3
+  DIAMOND_ORE: diamond3
+  EMERALD_ORE: emerald3
+  QUARTZ_ORE: quartz3
+  NETHER_GOLD_ORE: nethergold3
+  # Farms
+  WHEAT: wheat3
+  SUGAR_CANE: sugarcane3
+  CARROTS: carrot3
+  POTATOES: potato3
+  BEETROOTS: beetroot3
+  PUMPKIN: pumpkin3
+  MELON: melon3
+  SWEET_BERRY_BUSH: berry3
+  CACTUS: cactus3
+  # Woods
+  OAK_LOG: oak3
+  OAK_WOOD: oak3
+  SPRUCE_LOG: spruce3
+  SPRUCE_WOOD: spruce3
+  BIRCH_LOG: birch3
+  BIRCH_WOOD: birch3
+  JUNGLE_LOG: jungle3
+  JUNGLE_WOOD: jungle3
+  ACACIA_LOG: acacia3
+  ACACIA_WOOD: acacia3
+  DARK_OAK_LOG: darkoak3
+  DARK_OAK_WOOD: darkoak3
+  CRIMSON_STEM: crimson3
+  CRIMSON_HYHPAE: crimson3
+  WARPED_STEM: warped3 
+  WARPED_HYPHAE: warped3
+
+# None >> 0%
+rare-material:
+  chance: 1
+  item:
+    # Ores
+    STONE: rarestone3
+    COAL_ORE: rarecoal3
+    REDSTONE_ORE: rareredstone3
+    LAPIS_ORE: rarelapis3
+    IRON_ORE: rareore3
+    GOLD_ORE: raregold3
+    DIAMOND_ORE: rarediamond3
+    EMERALD_ORE: rareemerald3
+    QUARTZ_ORE: rarequartz3
+    NETHER_GOLD_ORE: rarenethergold3
+    # Farms
+    WHEAT: rarewheat3
+    SUGAR_CANE: raresugarcane3
+    CARROTS: rarecarrot3
+    POTATOES: rarepotato3
+    BEETROOTS: rarebeetroot3
+    PUMPKIN: rarepumpkin3
+    MELON: raremelon3
+    SWEET_BERRY_BUSH: rareberry3
+    CACTUS: rarecactus3
+    # Wood
+    OAK_LOG: rareoak3
+    OAK_WOOD: rareoak3
+    SPRUCE_LOG: rarespruce3
+    SPRUCE_WOOD: rarespruce3
+    BIRCH_LOG: rarebirch3
+    BIRCH_WOOD: rarebirch3
+    JUNGLE_LOG: rarejungle3
+    JUNGLE_WOOD: rarejungle3
+    ACACIA_LOG: rareacacia3
+    ACACIA_WOOD: rareacacia3
+    DARK_OAK_LOG: raredarkoak3
+    DARK_OAK_WOOD: raredarkoak3
+    CRIMSON_STEM: rarecrimson3
+    CRIMSON_HYHPAE: rarecrimson3
+    WARPED_STEM: rarewarped3
+    WARPED_HYPHAE: rarewarped3
+
+# None set >> Defaut = AIR
+default:
+  STONE: COBBLESTONE
+  COAL_ORE: COBBLESTONE
+  REDSTONE_ORE: COBBLESTONE
+  LAPIS_ORE: COBBLESTONE
+  IRON_ORE: COBBLESTONE
+  GOLD_ORE: COBBLESTONE
+  DIAMOND_ORE: COBBLESTONE
+  EMERALD_ORE: COBBLESTONE
+  QUARTZ_ORE: NETHERRACK
+  NETHER_GOLD_ORE: NETHERRACK
+  SWEET_BERRY_BUSH: SWEET_BERRY_BUSH
+
+destroy-packet:
+  - OAK_LOG
+  - OAK_WOOD
+  - SPRUCE_LOG
+  - SPRUCE_WOOD
+  - BIRCH_LOG
+  - BIRCH_WOOD
+  - JUNGLE_LOG
+  - JUNGLE_WOOD
+  - ACACIA_LOG
+  - ACACIA_WOOD
+  - DARK_OAK_LOG
+  - DARK_OAK_WOOD
+  - CRIMSON_STEM
+  - CRIMSON_HYHPAE
+  - WARPED_STEM
+  - CRIMSON_HYPHAE
+
+tool:
+  pickaxe1:
+    texture: IRON_PICKAXE 1
+    durability: 100
+    blocks: [STONE, COAL_ORE]
+
+  pickaxe2:
+    texture: IRON_PICKAXE 2
+    durability: 200
+    blocks: [STONE, COAL_ORE, REDSTONE_ORE]
+
+  pickaxe3:
+    texture: IRON_PICKAXE 3
+    durability: 300
+    blocks: [STONE, COAL_ORE, REDSTONE_ORE, LAPIS_ORE]
+
+  pickaxe4:
+    texture: IRON_PICKAXE 4
+    durability: 400
+    blocks: [STONE, COAL_ORE, REDSTONE_ORE, LAPIS_ORE, IRON_ORE]
+
+  pickaxe5:
+    texture: IRON_PICKAXE 5
+    durability: 500
+    blocks: [STONE, COAL_ORE, REDSTONE_ORE, LAPIS_ORE, IRON_ORE, GOLD_ORE]
+
+  pickaxe6:
+    texture: IRON_PICKAXE 6
+    durability: 600
+    blocks: [STONE, COAL_ORE, REDSTONE_ORE, LAPIS_ORE, IRON_ORE, GOLD_ORE, DIAMOND_ORE]
+
+  pickaxe7:
+    texture: IRON_PICKAXE 7
+    durability: 700
+    blocks: [STONE, COAL_ORE, REDSTONE_ORE, LAPIS_ORE, IRON_ORE, GOLD_ORE, DIAMOND_ORE, EMERALD_ORE]
+
+  pickaxe8:
+    texture: IRON_PICKAXE 8
+    durability: 800
+    blocks: [STONE, COAL_ORE, REDSTONE_ORE, LAPIS_ORE, IRON_ORE, GOLD_ORE, DIAMOND_ORE, EMERALD_ORE, QUARTZ_ORE]
+
+  pickaxe9:
+    texture: IRON_PICKAXE 9
+    durability: 900
+    blocks: [STONE, COAL_ORE, REDSTONE_ORE, LAPIS_ORE, IRON_ORE, GOLD_ORE, DIAMOND_ORE, EMERALD_ORE, QUARTZ_ORE, NETHER_GOLD_ORE]
+
+  axe1:
+    texture: STONE_AXE 1
+    durability: 100
+    blocks: [OAK_LOG, OAK_WOOD]
+
+  axe2:
+    texture: STONE_AXE 2
+    durability: 200
+    blocks: [OAK_LOG, OAK_WOOD, SPRUCE_LOG, SPRUCE_WOOD]
+
+  axe3:
+    texture: STONE_AXE 3
+    durability: 300
+    blocks: [OAK_LOG, OAK_WOOD, SPRUCE_LOG, SPRUCE_WOOD, BIRCH_LOG, BIRCH_WOOD]
+
+  axe4:
+    texture: STONE_AXE 4
+    durability: 400
+    blocks: [OAK_LOG, OAK_WOOD, SPRUCE_LOG, SPRUCE_WOOD, BIRCH_LOG, BIRCH_WOOD, JUNGLE_LOG, JUNGLE_WOOD]
+
+  axe5:
+    texture: STONE_AXE 5
+    durability: 500
+    blocks: [OAK_LOG, OAK_WOOD, SPRUCE_LOG, SPRUCE_WOOD, BIRCH_LOG, BIRCH_WOOD, JUNGLE_LOG, JUNGLE_WOOD, ACACIA_LOG, ACACIA_WOOD]
+
+  axe6:
+    texture: STONE_AXE 6
+    durability: 600
+    blocks: [OAK_LOG, OAK_WOOD, SPRUCE_LOG, SPRUCE_WOOD, BIRCH_LOG, BIRCH_WOOD, JUNGLE_LOG, JUNGLE_WOOD, ACACIA_LOG, ACACIA_WOOD, DARK_OAK_LOG, DARK_OAK_WOOD]
+
+  axe7:
+    texture: STONE_AXE 7
+    durability: 700
+    blocks: [OAK_LOG, OAK_WOOD, SPRUCE_LOG, SPRUCE_WOOD, BIRCH_LOG, BIRCH_WOOD, JUNGLE_LOG, JUNGLE_WOOD, ACACIA_LOG, ACACIA_WOOD, DARK_OAK_LOG, DARK_OAK_WOOD, CRIMSON_STEM, CRIMSON_HYPHAE]
+
+  axe8:
+    texture: STONE_AXE 8
+    durability: 800
+    blocks: [OAK_LOG, OAK_WOOD, SPRUCE_LOG, SPRUCE_WOOD, BIRCH_LOG, BIRCH_WOOD, JUNGLE_LOG, JUNGLE_WOOD, ACACIA_LOG, ACACIA_WOOD, DARK_OAK_LOG, DARK_OAK_WOOD, CRIMSON_STEM, CRIMSON_HYPHAE, WARPED_STEM, WARPED_HYPHAE]
+
+  hoe1:
+    texture: STONE_HOE 1
+    durability: 100
+    blocks: [WHEAT]
+
+  hoe2:
+    texture: STONE_HOE 2
+    durability: 200
+    blocks: [WHEAT, SUGAR_CANE]
+
+  hoe3:
+    texture: STONE_HOE 3
+    durability: 300
+    blocks: [WHEAT, SUGAR_CANE, CARROTS]
+
+  hoe4:
+    texture: STONE_HOE 4
+    durability: 400
+    blocks: [WHEAT, SUGAR_CANE, CARROTS, POTATOES]
+
+  hoe5:
+    texture: STONE_HOE 5
+    durability: 500
+    blocks: [WHEAT, SUGAR_CANE, CARROTS, POTATOES, BEETROOTS]
+
+  hoe6:
+    texture: STONE_HOE 6
+    durability: 600
+    blocks: [WHEAT, SUGAR_CANE, CARROTS, POTATOES, BEETROOTS, PUMPKIN]
+
+  hoe7:
+    texture: STONE_HOE 7
+    durability: 700
+    blocks: [WHEAT, SUGAR_CANE, CARROTS, POTATOES, BEETROOTS, PUMPKIN, MELON]
+
+  hoe8:
+    texture: STONE_HOE 8
+    durability: 800
+    blocks: [WHEAT, SUGAR_CANE, CARROTS, POTATOES, BEETROOTS, PUMPKIN, MELON, SWEET_BERRY_BUSH]
+
+  hoe9:
+    texture: STONE_HOE 9
+    durability: 900
+    blocks: [WHEAT, SUGAR_CANE, CARROTS, POTATOES, BEETROOTS, PUMPKIN, MELON, SWEET_BERRY_BUSH, CACTUS]

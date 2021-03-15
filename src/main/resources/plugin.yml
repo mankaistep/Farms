@@ -1,0 +1,9 @@
+name: Farms
+version: ${project.version}
+main: me.manaki.plugin.farms.Farms
+api-version: 1.16
+authors: [ MankaiStep ]
+depend: [ Shops ]
+commands:
+  farms:
+    permission: farms.admin

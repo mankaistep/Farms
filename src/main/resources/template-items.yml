@@ -1,0 +1,238 @@
+stone3:
+  v: 2586
+  type: FLINT
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Đá"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+coal3:
+  v: 2586
+  type: COAL
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Than"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+redstone3:
+  v: 2586
+  type: REDSTONE
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Đá
+      đỏ"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+iron3:
+  v: 2586
+  type: IRON_INGOT
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Sắt"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+gold3:
+  v: 2586
+  type: GOLD_INGOT
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Vàng"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+lapis3:
+  v: 2586
+  type: LAPIS_LAZULI
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Lưu
+      ly"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+diamond3:
+  v: 2586
+  type: DIAMOND
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Kim
+      cương"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+emerald3:
+  v: 2586
+  type: EMERALD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Lục
+      bảo"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+quartz3:
+  v: 2586
+  type: QUARTZ
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Thạch
+      anh"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+nethergold3:
+  v: 2586
+  type: GOLD_NUGGET
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Vàng
+      Nether"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+    custom-model-data: 1
+rarestone3:
+  v: 2586
+  type: FLINT
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Đá
+      hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarecoal3:
+  v: 2586
+  type: COAL
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Than
+      hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rareredstone3:
+  v: 2586
+  type: REDSTONE
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Đá
+      đỏ hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rareiron3:
+  v: 2586
+  type: IRON_INGOT
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Sắt
+      hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+raregold3:
+  v: 2586
+  type: GOLD_INGOT
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Vàng
+      hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarelapis3:
+  v: 2586
+  type: LAPIS_LAZULI
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Lưu
+      ly hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarediamond3:
+  v: 2586
+  type: DIAMOND
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Kim
+      cương hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rareemerald3:
+  v: 2586
+  type: EMERALD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Lục
+      bảo hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarenethergold3:
+  v: 2586
+  type: GOLD_NUGGET
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Vàng
+      Nether hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+    custom-model-data: 1
+    enchants:
+      DURABILITY: 1
+rarequartz3:
+  v: 2586
+  type: QUARTZ
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Thạch
+      anh hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoáng
+      sản khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
