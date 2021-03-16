@@ -1,22 +1,22 @@
 package me.manaki.plugin.farms.listener;
 
+import me.manaki.plugin.farms.ItemStackManager;
 import me.manaki.plugin.farms.Tasks;
 import me.manaki.plugin.farms.config.Configs;
 import me.manaki.plugin.farms.history.BLocation;
 import me.manaki.plugin.farms.history.BlockHistory;
 import me.manaki.plugin.farms.history.Histories;
-import me.manaki.plugin.farms.tool.Tool;
 import me.manaki.plugin.farms.tool.Tools;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.Ageable;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerHarvestBlockEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Random;
@@ -37,8 +37,31 @@ public class BlockListener implements Listener {
         // Check block
         Block b = e.getBlock();
         Material type = b.getType();
-        if (Configs.getALlBlockTypes().contains(type.name())) e.setCancelled(true);
-        else return;
+        if (Histories.inWaiting(b)) {
+            e.setCancelled(true);
+            return;
+        }
+        if (!Configs.getALlBlockTypes().contains(type.name())) return;
+
+        // Remove drop
+        e.setDropItems(false);
+
+        // Save if world is claimed
+        if (Configs.isWorldRespawn(p.getWorld().getName())) {
+            Tasks.async(() -> {
+                Histories.add(new BlockHistory(type, new BLocation(b.getWorld().getName(), b.getX(), b.getY(), b.getZ()), System.currentTimeMillis() + Configs.RESPAWN_SECONDS * 1000));
+            });
+        }
+
+
+        // Check age
+        if (b.getType() != Material.SUGAR_CANE && b.getBlockData() instanceof Ageable) {
+            var ab = (Ageable) b.getBlockData();
+            if (ab.getAge() < ab.getMaximumAge()) {
+                p.sendMessage("§cChỉ có thể khai thác khi cây lớn tối đa");
+                return;
+            }
+        }
 
         // Check item
         ItemStack is = p.getInventory().getItemInMainHand();
@@ -72,19 +95,9 @@ public class BlockListener implements Listener {
         });
 
         Tasks.sync(() -> {
-
-            // Destroy packet
-            if (Configs.isDestroyPacket(type)) {
-                p.sendBlockChange(b.getLocation(), Bukkit.createBlockData(Material.AIR));
-                System.out.println("Bum");
-            }
-            else {
-                // Default
-                Material m = Configs.getDefault(type);
-                b.setType(m);
-                System.out.println(m.name() + " ?");
-            }
-            Histories.add(new BlockHistory(type, new BLocation(b.getWorld().getName(), b.getX(), b.getY(), b.getZ()), System.currentTimeMillis() + Configs.RESPAWN_SECONDS * 1000));
+            // Set and save
+            Material m = Configs.getDefault(type);
+            b.setType(m);
 
             // Drop
             ItemStack drop = null;
@@ -93,7 +106,7 @@ public class BlockListener implements Listener {
             }
             else drop = Configs.getMaterial(type);
 
-            String name = drop.getItemMeta().hasDisplayName() ? drop.getItemMeta().getDisplayName() : null;
+            String name = new ItemStackManager(drop).getName();
             Item i = p.getWorld().dropItemNaturally(b.getLocation().add(0.5, 0.5, 0.5), drop);
             if (name != null) {
                 i.setCustomName(name);
@@ -104,20 +117,19 @@ public class BlockListener implements Listener {
     }
 
     /*
-    Disable special interact with configed blocks
+    Disable harvest
      */
     @EventHandler
-    public void onInteract(PlayerInteractEvent e) {
+    public void onInteract(PlayerHarvestBlockEvent e) {
         Player p = e.getPlayer();
-        Block b = e.getClickedBlock();
-        if (b == null) return;
+        Block b = e.getHarvestedBlock();
         Material type = b.getType();
 
         ItemStack is = p.getInventory().getItemInMainHand();
         String tid = Tools.read(is);
         if (Configs.getALlBlockTypes().contains(type.name()) && (tid == null || !Tools.isRightTool(tid, type))) {
-            e.setCancelled(true);
-            p.sendMessage("§cDùng đúng công cụ để khai thác!");
+            e.getItemsHarvested().clear();
+            p.sendMessage("§cPhải dùng đúng công cụ để khai thác!");
         }
     }
 

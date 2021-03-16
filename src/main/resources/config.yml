@@ -1,8 +1,41 @@
 respawn-seconds: 5
-worlds:
+
+allow-worlds:
   - world_skyblock
   - world_forest_1
   - world_mine_1
+
+respawn-worlds:
+  - world_forest_1
+  - world_mine_1
+
+respawns:
+  - OAK_LOG
+  - OAK_WOOD
+  - SPRUCE_LOG
+  - SPRUCE_WOOD
+  - BIRCH_LOG
+  - BIRCH_WOOD
+  - JUNGLE_LOG
+  - JUNGLE_WOOD
+  - ACACIA_LOG
+  - ACACIA_WOODi
+  - DARK_OAK_LOG
+  - DARK_OAK_WOOD
+  - CRIMSON_STEM
+  - CRIMSON_HYHPAE
+  - WARPED_STEM
+  - CRIMSON_HYPHAE
+  - STONE
+  - COAL_ORE
+  - REDSTONE_ORE
+  - LAPIS_ORE
+  - IRON_ORE
+  - GOLD_ORE
+  - DIAMOND_ORE
+  - EMERALD_ORE
+  - QUARTZ_ORE
+  - NETHER_GOLD_ORE
 
 fix:
   item: fixer3
@@ -23,7 +56,7 @@ trans:
   SUGAR_CANE: Mía
   CARROTS: Cà rốt
   POTATOES: Khoai tây
-  BETROOTS: Củ dền
+  BEETROOTS: Củ dền
   PUMPKIN: Bí ngô
   MELON: Dưa hấu
   SWEET_BERRY_BUSH: Quả mọng
@@ -53,7 +86,7 @@ material:
   COAL_ORE: coal3
   REDSTONE_ORE: redstone3
   LAPIS_ORE: lapis3
-  IRON_ORE: ore3
+  IRON_ORE: iron3
   GOLD_ORE: gold3
   DIAMOND_ORE: diamond3
   EMERALD_ORE: emerald3
@@ -96,7 +129,7 @@ rare-material:
     COAL_ORE: rarecoal3
     REDSTONE_ORE: rareredstone3
     LAPIS_ORE: rarelapis3
-    IRON_ORE: rareore3
+    IRON_ORE: rareiron3
     GOLD_ORE: raregold3
     DIAMOND_ORE: rarediamond3
     EMERALD_ORE: rareemerald3
@@ -143,24 +176,10 @@ default:
   QUARTZ_ORE: NETHERRACK
   NETHER_GOLD_ORE: NETHERRACK
   SWEET_BERRY_BUSH: SWEET_BERRY_BUSH
-
-destroy-packet:
-  - OAK_LOG
-  - OAK_WOOD
-  - SPRUCE_LOG
-  - SPRUCE_WOOD
-  - BIRCH_LOG
-  - BIRCH_WOOD
-  - JUNGLE_LOG
-  - JUNGLE_WOOD
-  - ACACIA_LOG
-  - ACACIA_WOOD
-  - DARK_OAK_LOG
-  - DARK_OAK_WOOD
-  - CRIMSON_STEM
-  - CRIMSON_HYHPAE
-  - WARPED_STEM
-  - CRIMSON_HYPHAE
+  WHEAT: WHEAT
+  CARROTS: CARROTS
+  POTATOES: POTATOES
+  BEETROOTS: BEETROOTS
 
 tool:
   pickaxe1:

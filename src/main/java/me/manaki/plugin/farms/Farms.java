@@ -43,6 +43,7 @@ public final class Farms extends JavaPlugin {
         this.saveDefaultConfig();
         this.config = YamlConfiguration.loadConfiguration(new File(this.getDataFolder(), "config.yml"));
         Configs.reload(config);
+        Histories.load();
     }
 
     public static Farms get() {

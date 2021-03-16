@@ -1,24 +1,35 @@
 package me.manaki.plugin.farms.history;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import me.manaki.plugin.farms.Farms;
+import me.manaki.plugin.farms.Tasks;
 import org.bukkit.Location;
+import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Histories {
 
-    private static final List<BlockHistory> histories = Lists.newArrayList();
+    private static final Set<BlockHistory> histories = Sets.newHashSet();
     private static FileConfiguration config;
 
     private static boolean change = false;
+
+    public static boolean inWaiting(Block b) {
+        for (BlockHistory h : histories) {
+            if (h.getLocation().getWorld().equalsIgnoreCase(b.getWorld().getName())
+                    && h.getLocation().toLocation().getBlockX() == b.getX()
+                    && h.getLocation().toLocation().getBlockY() == b.getY()
+                    && h.getLocation().toLocation().getBlockZ() == b.getZ()) return true;
+        }
+        return false;
+    }
 
     public static void load() {
         File file = new File(Farms.get().getDataFolder(), "blocks.yml");
@@ -39,10 +50,13 @@ public class Histories {
 
     public static void checkAll() {
         for (BlockHistory h : Lists.newArrayList(histories)) {
-            if (h.getExpire() > System.currentTimeMillis()) {
+            if (h.getExpire() < System.currentTimeMillis()) {
                 Location l = h.getLocation().toLocation();
-                l.getBlock().setType(h.getType());
                 histories.remove(h);
+                Tasks.sync(() -> {
+                    l.getBlock().setType(h.getType());
+                });
+                change = true;
             }
         }
         if (change) {
@@ -59,7 +73,7 @@ public class Histories {
     public static void write() {
         config.set("blocks", histories.stream().map(hb -> hb.toString()).collect(Collectors.toList()));
         try {
-            config.save(new File(Farms.get().getDataFolder(), "config.yml"));
+            config.save(new File(Farms.get().getDataFolder(), "blocks.yml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

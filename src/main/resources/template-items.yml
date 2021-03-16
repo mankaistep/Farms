@@ -236,3 +236,422 @@ rarequartz3:
       sản khai thác"}],"text":""}'
     enchants:
       DURABILITY: 1
+wheat3:
+  v: 2586
+  type: WHEAT
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Lúa"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+sugarcane3:
+  v: 2586
+  type: SUGAR_CANE
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Mía"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+carrot3:
+  v: 2586
+  type: CARROT
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Cà
+      rốt"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+potato3:
+  v: 2586
+  type: POTATO
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Khoai
+      tây"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+beetroot3:
+  v: 2586
+  type: BEETROOT
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Củ
+      dền"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+pumpkin3:
+  v: 2586
+  type: PUMPKIN
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Bí
+      ngô"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+melon3:
+  v: 2586
+  type: MELON
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Dưa
+      hấu"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+berry3:
+  v: 2586
+  type: SWEET_BERRIES
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Quả
+      mọng"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+cactus3:
+  v: 2586
+  type: CACTUS
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Xương
+      rồng"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+rarewheat3:
+  v: 2586
+  type: WHEAT
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Lúa
+      hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+raresugarcane3:
+  v: 2586
+  type: SUGAR_CANE
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Mía
+      hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarecaroot3:
+  v: 2586
+  type: CARROT
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Cà
+      rốt hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarepotato3:
+  v: 2586
+  type: POTATO
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Khoai
+      tây hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarebeetroot3:
+  v: 2586
+  type: BEETROOT
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Củ
+      dền hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarepumpkin3:
+  v: 2586
+  type: PUMPKIN
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Bí
+      ngô hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+raremelon3:
+  v: 2586
+  type: MELON
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Dưa
+      hấu hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rareberry3:
+  v: 2586
+  type: SWEET_BERRIES
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Quả
+      mọng hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarecactus3:
+  v: 2586
+  type: CACTUS
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Xương
+      rồng hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Nông
+      sản được thu hoạch"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+oak3:
+  v: 2586
+  type: OAK_WOOD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      sồi"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+spruce3:
+  v: 2586
+  type: SPRUCE_WOOD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      vân sam"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+birch3:
+  v: 2586
+  type: BIRCH_WOOD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      bạch dương"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+jungle3:
+  v: 2586
+  type: JUNGLE_WOOD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      rừng"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+acacia3:
+  v: 2586
+  type: ACACIA_WOOD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      xiêm gai"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+darkoak3:
+  v: 2586
+  type: DARK_OAK_WOOD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      sồi sẫm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+crimson3:
+  v: 2586
+  type: CRIMSON_HYPHAE
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      đỏ"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+warped3:
+  v: 2586
+  type: WARPED_HYPHAE
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      nấm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+rareoak3:
+  v: 2586
+  type: OAK_WOOD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Gỗ
+      sồi hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarespruce3:
+  v: 2586
+  type: SPRUCE_WOOD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Gỗ
+      vân sam hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarebirch3:
+  v: 2586
+  type: BIRCH_WOOD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Gỗ
+      bạch dương hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarejungle3:
+  v: 2586
+  type: JUNGLE_WOOD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Gỗ
+      rừng hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rareacacia3:
+  v: 2586
+  type: ACACIA_WOOD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Gỗ
+      xiêm gai hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+raredarkoak3:
+  v: 2586
+  type: DARK_OAK_WOOD
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Gỗ
+      sồi sẫm hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarecrimson3:
+  v: 2586
+  type: CRIMSON_HYPHAE
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Gỗ
+      đỏ hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+rarewarped3:
+  v: 2586
+  type: WARPED_HYPHAE
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"red","text":"Gỗ
+      nấm hiếm"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Gỗ
+      được khai thác"}],"text":""}'
+    enchants:
+      DURABILITY: 1
+fixer3:
+  v: 2586
+  type: GOLD_NUGGET
+  meta:
+    ==: ItemMeta
+    meta-type: UNSPECIFIC
+    display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"gold","text":"Đá
+      sửa chữa"}],"text":""}'
+    lore:
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Có
+      tác dụng sữa chữa cho các công cụ"}],"text":""}'
+      - '{"extra":[{"bold":false,"italic":true,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"Cách
+      dùng: Click đè lên các công cụ đó"}],"text":""}'

@@ -23,8 +23,9 @@ public class Configs {
     public static int FIX_BONUS;
     public static int RESPAWN_SECONDS;
 
-    private static List<String> WORLDS = Lists.newArrayList();
-    private static List<String> DESTROY_PACKETS = Lists.newArrayList();
+    private static List<String> ALLOW_WORLDS = Lists.newArrayList();
+    private static List<String> RESPAWN_WORLDS = Lists.newArrayList();
+    private static List<String> RESPAWNS = Lists.newArrayList();
 
     private final static Map<String, String> TRANS = Maps.newHashMap();
     private final static Map<String, String> MATERIALS = Maps.newHashMap();
@@ -40,10 +41,13 @@ public class Configs {
         RESPAWN_SECONDS = config.getInt("respawn-seconds");
 
         // Destroy packet
-        DESTROY_PACKETS = config.getStringList("destroy-packet");
+        RESPAWNS = config.getStringList("respawns");
 
         // Worlds
-        WORLDS = config.getStringList("worlds");
+        ALLOW_WORLDS = config.getStringList("allow-worlds");
+
+        // Worlds
+        RESPAWN_WORLDS = config.getStringList("respawn-worlds");
 
         // Trans
         TRANS.clear();
@@ -126,11 +130,15 @@ public class Configs {
     }
 
     public static boolean isWorld(String w) {
-        return WORLDS.contains(w);
+        return ALLOW_WORLDS.contains(w);
     }
 
-    public static boolean isDestroyPacket(Material m) {
-        return DESTROY_PACKETS.contains(m.name());
+//    public static boolean isRespawn(Material m) {
+//        return RESPAWNS.contains(m.name());
+//    }
+
+    public static boolean isWorldRespawn(String w) {
+        return RESPAWN_WORLDS.contains(w);
     }
 
 }
