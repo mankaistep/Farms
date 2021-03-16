@@ -21,6 +21,7 @@ public class Configs {
     public static double RARE_MATERIAL_CHANCE = 0;
     public static String FIX_ITEM;
     public static int FIX_BONUS;
+    public static int RESPAWN_SECONDS;
 
     private static List<String> WORLDS = Lists.newArrayList();
     private static List<String> DESTROY_PACKETS = Lists.newArrayList();
@@ -36,6 +37,7 @@ public class Configs {
         RARE_MATERIAL_CHANCE = config.getDouble("rare-material.chance");
         FIX_ITEM = config.getString("fix.item");
         FIX_BONUS = config.getInt("fix.bonus");
+        RESPAWN_SECONDS = config.getInt("respawn-seconds");
 
         // Destroy packet
         DESTROY_PACKETS = config.getStringList("destroy-packet");

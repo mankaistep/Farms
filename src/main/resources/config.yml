@@ -1,3 +1,4 @@
+respawn-seconds: 5
 worlds:
   - world_skyblock
   - world_forest_1

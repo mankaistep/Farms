@@ -2,6 +2,7 @@ package me.manaki.plugin.farms;
 
 import me.manaki.plugin.farms.command.FarmCommand;
 import me.manaki.plugin.farms.config.Configs;
+import me.manaki.plugin.farms.history.Histories;
 import me.manaki.plugin.farms.listener.BlockListener;
 import me.manaki.plugin.farms.listener.FixListener;
 import org.bukkit.Bukkit;
@@ -26,11 +27,15 @@ public final class Farms extends JavaPlugin {
 
         // Command
         this.getCommand("farms").setExecutor(new FarmCommand());
+
+        // Task check
+        Tasks.async(Histories::checkAll, 0, 5);
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        Histories.checkAll();
     }
 
     @Override

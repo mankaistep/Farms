@@ -2,6 +2,9 @@ package me.manaki.plugin.farms.listener;
 
 import me.manaki.plugin.farms.Tasks;
 import me.manaki.plugin.farms.config.Configs;
+import me.manaki.plugin.farms.history.BLocation;
+import me.manaki.plugin.farms.history.BlockHistory;
+import me.manaki.plugin.farms.history.Histories;
 import me.manaki.plugin.farms.tool.Tool;
 import me.manaki.plugin.farms.tool.Tools;
 import org.bukkit.Bukkit;
@@ -81,6 +84,7 @@ public class BlockListener implements Listener {
                 b.setType(m);
                 System.out.println(m.name() + " ?");
             }
+            Histories.add(new BlockHistory(type, new BLocation(b.getWorld().getName(), b.getX(), b.getY(), b.getZ()), System.currentTimeMillis() + Configs.RESPAWN_SECONDS * 1000));
 
             // Drop
             ItemStack drop = null;
