@@ -59,7 +59,6 @@ public class Tools {
         meta.getPersistentDataContainer().set(getDurKey(), PersistentDataType.INTEGER, dur);
         is.setItemMeta(meta);
 
-        is.setItemMeta(meta);
     }
 
     public static boolean isRightTool(String id, Material m) {
@@ -71,13 +70,15 @@ public class Tools {
         assert t != null;
 
         ItemStack is = new ItemStack(t.getTextureType());
-        setDur(is, t.getDurability());
-        updateLore(id, is);
 
         ItemMeta meta = is.getItemMeta();
+        if (t.getName() != null) meta.setDisplayName(t.getName());
         meta.setCustomModelData(t.getTextureData());
         meta.getPersistentDataContainer().set(getToolKey(), PersistentDataType.STRING, id);
         is.setItemMeta(meta);
+
+        setDur(is, t.getDurability());
+        updateLore(id, is);
 
         return is;
     }
@@ -88,7 +89,7 @@ public class Tools {
 
         ItemMeta meta = is.getItemMeta();
         List<String> lore = Lists.newArrayList();
-        lore.add(DUR_LINE + getDur(is));
+        lore.add(DUR_LINE + getDur(is) + "/" + t.getDurability());
         lore.add("§aKhai thác được: ");
         Set<String> set = Sets.newLinkedHashSet();
 
@@ -109,7 +110,7 @@ public class Tools {
         return new NamespacedKey(Farms.get(), "dur");
     }
 
-    private static NamespacedKey getFixerKey() {
+    public static NamespacedKey getFixerKey() {
         return new NamespacedKey(Farms.get(), "fixer");
     }
 

@@ -65,6 +65,10 @@
             <id>minevn</id>
             <url>http://pack.minefs.net/repo/</url>
         </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -78,6 +82,12 @@
             <groupId>minevn.depend</groupId>
             <artifactId>Shops</artifactId>
             <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>world.bentobox</groupId>
+            <artifactId>bentobox</artifactId>
+            <version>1.16.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -24,7 +24,10 @@ public class FixListener implements Listener {
         var t = Configs.getTool(tid);
         var newdur = Math.min(t.getDurability(), Configs.FIX_BONUS + Tools.getDur(current));
         Tools.setDur(current, newdur);
+        Tools.updateLore(tid, current);
+
         cursor.setType(Material.AIR);
+
         p.updateInventory();
     }
 

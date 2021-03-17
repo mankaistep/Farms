@@ -4,6 +4,8 @@ main: me.manaki.plugin.farms.Farms
 api-version: 1.16
 authors: [ MankaiStep ]
 depend: [ Shops ]
+softdepend:
+  - BentoBox
 commands:
   farms:
     permission: farms.admin

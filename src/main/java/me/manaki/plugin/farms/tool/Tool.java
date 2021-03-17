@@ -7,13 +7,15 @@ import java.util.List;
 public class Tool {
 
     private String id;
+    private String name;
     private Material textureType;
     private int textureData;
     private int durability;
     private List<String> blocks;
 
-    public Tool(String id, Material textureType, int textureData, int durability, List<String> blocks) {
+    public Tool(String id, String name, Material textureType, int textureData, int durability, List<String> blocks) {
         this.id = id;
+        this.name = name;
         this.textureType = textureType;
         this.textureData = textureData;
         this.durability = durability;
@@ -22,6 +24,10 @@ public class Tool {
 
     public String getID() {
         return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Material getTextureType() {

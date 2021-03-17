@@ -81,7 +81,9 @@ public class Configs {
             int textureData = Integer.parseInt(texture.split(" ")[1].toUpperCase());
             int durability = config.getInt("tool." + id + ".durability");
             List<String> blocks = config.getStringList("tool." + id + ".blocks");
-            TOOLS.put(id, new Tool(id, textureType, textureData, durability, blocks));
+            String name = config.getString("tool." + id + ".name");
+            if (name != null) name = name.replace("&", "§");
+            TOOLS.put(id, new Tool(id, name, textureType, textureData, durability, blocks));
         }
     }
 
@@ -111,7 +113,7 @@ public class Configs {
     public static ItemStack getFixItem() {
         ItemStack is = ItemStorage.get(FIX_ITEM);
         ItemMeta meta = is.getItemMeta();
-        meta.getPersistentDataContainer().set(Tools.getToolKey(), PersistentDataType.STRING, "fixer");
+        meta.getPersistentDataContainer().set(Tools.getFixerKey(), PersistentDataType.STRING, "fixer");
         is.setItemMeta(meta);
 
         return is;

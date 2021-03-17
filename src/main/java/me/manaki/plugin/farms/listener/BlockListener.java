@@ -1,5 +1,6 @@
 package me.manaki.plugin.farms.listener;
 
+import me.manaki.plugin.farms.Farms;
 import me.manaki.plugin.farms.ItemStackManager;
 import me.manaki.plugin.farms.Tasks;
 import me.manaki.plugin.farms.config.Configs;
@@ -8,6 +9,7 @@ import me.manaki.plugin.farms.history.BlockHistory;
 import me.manaki.plugin.farms.history.Histories;
 import me.manaki.plugin.farms.tool.Tools;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Ageable;
 import org.bukkit.entity.Item;
@@ -42,6 +44,12 @@ public class BlockListener implements Listener {
             return;
         }
         if (!Configs.getALlBlockTypes().contains(type.name())) return;
+
+        // Check hook
+        if (Farms.get().getHook() != null && !Farms.get().getHook().canExploit(b, p)) {
+            p.sendMessage("§cKhông thể khai thác ở đây!");
+            return;
+        }
 
         // Remove drop
         e.setDropItems(false);
@@ -82,6 +90,7 @@ public class BlockListener implements Listener {
         if (dur <= 0) {
             p.sendMessage("§cĐộ bền bằng 0, không thể khai thác");
             p.sendMessage("§cDùng Đá sửa chữa để sửa công cụ!");
+            p.playSound(p.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
             return;
         }
 
