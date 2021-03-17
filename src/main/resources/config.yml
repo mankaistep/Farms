@@ -55,11 +55,15 @@ trans:
   WHEAT: Lúa
   SUGAR_CANE: Mía
   CARROTS: Cà rốt
+  CARROT: Cà rốt
   POTATOES: Khoai tây
+  POTATO: Khoai tây
   BEETROOTS: Củ dền
+  BEETROOT: Củ dền
   PUMPKIN: Bí ngô
   MELON: Dưa hấu
   SWEET_BERRY_BUSH: Quả mọng
+  SWEET_BERRIES: Quả mọng
   CACTUS: Xương rồng
   OAK_LOG: Gỗ sồi
   OAK_WOOD: Gỗ sồi
@@ -74,9 +78,9 @@ trans:
   DARK_OAK_LOG: Gỗ sồi sẫm
   DARK_OAK_WOOD: Gỗ sồi sẫm
   CRIMSON_STEM: Cuống đỏ thẫm
-  CRIMSON_HYHPAE: Cuống đỏ thẫm
+  CRIMSON_HYPHAE: Cuống đỏ thẫm
   WARPED_STEM: Cuống kỳ dị
-  CRIMSON_HYPHAE: Cuống kỳ dị
+  WARPED_HYPHAE: Cuống kỳ dị
 
 # Need Shops to work
 # None set >> Default = self
