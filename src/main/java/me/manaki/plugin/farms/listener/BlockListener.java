@@ -4,10 +4,12 @@ import me.manaki.plugin.farms.Farms;
 import me.manaki.plugin.farms.ItemStackManager;
 import me.manaki.plugin.farms.Tasks;
 import me.manaki.plugin.farms.config.Configs;
+import me.manaki.plugin.farms.event.PlayerFarmHarvestEvent;
 import me.manaki.plugin.farms.history.BLocation;
 import me.manaki.plugin.farms.history.BlockHistory;
 import me.manaki.plugin.farms.history.Histories;
 import me.manaki.plugin.farms.tool.Tools;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -121,6 +123,9 @@ public class BlockListener implements Listener {
                 i.setCustomName(name);
                 i.setCustomNameVisible(true);
             }
+
+            // Event
+            Bukkit.getPluginManager().callEvent(new PlayerFarmHarvestEvent(p, m.name()));
         });
 
     }
