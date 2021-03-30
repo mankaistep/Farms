@@ -125,7 +125,7 @@ public class BlockListener implements Listener {
             }
 
             // Event
-            Bukkit.getPluginManager().callEvent(new PlayerFarmHarvestEvent(p, m.name()));
+            Bukkit.getPluginManager().callEvent(new PlayerFarmHarvestEvent(p, type.name()));
         });
 
     }
