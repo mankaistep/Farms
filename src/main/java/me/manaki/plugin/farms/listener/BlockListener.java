@@ -53,6 +53,8 @@ public class BlockListener implements Listener {
             return;
         }
 
+        boolean success = true;
+
         // Remove drop
         e.setDropItems(false);
 
@@ -69,7 +71,7 @@ public class BlockListener implements Listener {
             var ab = (Ageable) b.getBlockData();
             if (ab.getAge() < ab.getMaximumAge()) {
                 p.sendMessage("§cChỉ có thể khai thác khi cây lớn tối đa");
-                return;
+                success = false;
             }
         }
 
@@ -78,13 +80,13 @@ public class BlockListener implements Listener {
         String tid = Tools.read(is);
         if (is.getType() == Material.AIR || tid == null) {
             p.sendMessage("§cPhải dùng công cụ để có thể thu hoạch/khai thác khối này!");
-            return;
+            success = false;
         }
 
         // Check tool
         if (!Tools.isRightTool(tid, type)) {
             p.sendMessage("§cKhông đúng loại công cụ!");
-            return;
+            success = false;
         }
 
         // Durability
@@ -93,7 +95,7 @@ public class BlockListener implements Listener {
             p.sendMessage("§cĐộ bền bằng 0, không thể khai thác");
             p.sendMessage("§cDùng Đá sửa chữa để sửa công cụ!");
             p.playSound(p.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
-            return;
+            success = false;
         }
 
         e.setCancelled(true);
@@ -105,12 +107,15 @@ public class BlockListener implements Listener {
             p.updateInventory();
         });
 
+        var canDrop = success;
         Tasks.sync(() -> {
             // Set and save
             Material m = Configs.getDefault(type);
             b.setType(m);
 
             // Drop
+            if (!canDrop) return;
+
             ItemStack drop = null;
             if (rate(Configs.RARE_MATERIAL_CHANCE)) {
                 drop = Configs.getRareMaterial(type);
