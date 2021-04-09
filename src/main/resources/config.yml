@@ -5,6 +5,13 @@ allow-worlds:
   - world_forest_1
   - world_mine_1
 
+specific-worlds:
+  world_skyblock:
+    - hoe1
+    - hoe2
+    - hoe3
+    - hoe4
+
 respawn-worlds:
   - world_forest_1
   - world_mine_1

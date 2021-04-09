@@ -83,6 +83,12 @@ public class BlockListener implements Listener {
             success = false;
         }
 
+        // Check specific world
+        if (Configs.isSpecificWorld(p.getWorld().getName())) {
+            var tools = Configs.getTools(p.getWorld().getName());
+            if (!tools.contains(tid)) return;
+        }
+
         // Check tool
         if (!Tools.isRightTool(tid, type)) {
             p.sendMessage("§cKhông đúng loại công cụ!");

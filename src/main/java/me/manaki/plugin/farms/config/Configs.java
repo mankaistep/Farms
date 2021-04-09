@@ -32,6 +32,7 @@ public class Configs {
     private final static Map<String, String> DEFAULTS = Maps.newHashMap();
     private final static Map<String, Tool> TOOLS = Maps.newHashMap();
     private final static Map<String, String> RARE_MATERIALS = Maps.newHashMap();
+    private final static Map<String, List<String>> SPECIFIC_WORLDS = Maps.newHashMap();
 
 
     public static void reload(FileConfiguration config) {
@@ -85,6 +86,13 @@ public class Configs {
             if (name != null) name = name.replace("&", "§");
             TOOLS.put(id, new Tool(id, name, textureType, textureData, durability, blocks));
         }
+
+        // Specific worlds
+        SPECIFIC_WORLDS.clear();
+        for (String world : config.getConfigurationSection("specific-worlds").getKeys(false)) {
+            List<String> list = config.getStringList("specific-worlds." + world);
+            SPECIFIC_WORLDS.put(world, list);
+        }
     }
 
     public static String getTrans(Material m) {
@@ -133,6 +141,14 @@ public class Configs {
 
     public static boolean isWorld(String w) {
         return ALLOW_WORLDS.contains(w);
+    }
+
+    public static boolean isSpecificWorld(String w) {
+        return SPECIFIC_WORLDS.containsKey(w);
+    }
+
+    public static List<String> getTools(String w) {
+        return SPECIFIC_WORLDS.get(w);
     }
 
 //    public static boolean isRespawn(Material m) {
