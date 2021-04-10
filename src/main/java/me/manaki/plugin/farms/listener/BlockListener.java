@@ -86,7 +86,10 @@ public class BlockListener implements Listener {
         // Check specific world
         if (Configs.isSpecificWorld(p.getWorld().getName())) {
             var tools = Configs.getTools(p.getWorld().getName());
-            if (!tools.contains(tid)) return;
+            if (!tools.contains(tid)) {
+                p.sendMessage("§cBởi một lý do nào đó, bạn không thể khai thác");
+                return;
+            }
         }
 
         // Check tool
@@ -104,7 +107,8 @@ public class BlockListener implements Listener {
             success = false;
         }
 
-        e.setCancelled(true);
+        Material m = Configs.getDefault(type);
+        if (m != Material.AIR) e.setCancelled(true);
 
         // Update durability
         Tasks.async(() -> {
@@ -116,7 +120,6 @@ public class BlockListener implements Listener {
         var canDrop = success;
         Tasks.sync(() -> {
             // Set and save
-            Material m = Configs.getDefault(type);
             b.setType(m);
 
             // Drop
