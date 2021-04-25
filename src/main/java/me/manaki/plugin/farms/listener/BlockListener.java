@@ -8,8 +8,10 @@ import me.manaki.plugin.farms.event.PlayerFarmHarvestEvent;
 import me.manaki.plugin.farms.history.BLocation;
 import me.manaki.plugin.farms.history.BlockHistory;
 import me.manaki.plugin.farms.history.Histories;
+import me.manaki.plugin.farms.restrict.Restricts;
 import me.manaki.plugin.farms.tool.Tools;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
@@ -20,12 +22,25 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.LeavesDecayEvent;
 import org.bukkit.event.player.PlayerHarvestBlockEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Random;
 
 public class BlockListener implements Listener {
+
+    @EventHandler
+    public void onLeavesDecay(LeavesDecayEvent e) {
+        // Check world
+        Block b = e.getBlock();
+        Location l = b.getLocation();
+
+        if (!Configs.isWorld(l.getWorld().getName())) return;
+        if (!Configs.isWorldRespawn(l.getWorld().getName())) return;
+
+        e.setCancelled(true);
+    }
 
     /*
     1. Disable minecraft durability
@@ -38,9 +53,23 @@ public class BlockListener implements Listener {
         Player p = e.getPlayer();
         if (!Configs.isWorld(p.getWorld().getName())) return;
 
-        // Check block
+        // Check mod break
+        if (p.hasPermission("farms.admin") && p.getInventory().getItemInMainHand().getType() == Material.AIR) return;
+
+        // Check restrict
         Block b = e.getBlock();
         Material type = b.getType();
+        if (Configs.getFarmRestricts().containsKey(p.getWorld().getName())) {
+            if (Restricts.isInCooldown(p, type.name())) {
+                p.sendMessage("§cNơi này giới hạn số lượng tài nguyên có thể khai thác");
+                p.sendMessage("§cKhai thác tiếp sau " + Restricts.getSecondRemain(p, type.name()) + " giây");
+                e.setCancelled(true);
+                return;
+            }
+            Restricts.add(p, type.name(), 1);
+        }
+
+        // Check block
         if (Histories.inWaiting(b)) {
             e.setCancelled(true);
             return;
@@ -61,7 +90,7 @@ public class BlockListener implements Listener {
         // Save if world is claimed
         if (Configs.isWorldRespawn(p.getWorld().getName())) {
             Tasks.async(() -> {
-                Histories.add(new BlockHistory(type, new BLocation(b.getWorld().getName(), b.getX(), b.getY(), b.getZ()), System.currentTimeMillis() + Configs.RESPAWN_SECONDS * 1000));
+                Histories.add(new BlockHistory(type, new BLocation(b.getWorld().getName(), b.getX(), b.getY(), b.getZ()), System.currentTimeMillis() + Configs.getRespawnTime(p.getWorld().getName()) * 1000L));
             });
         }
 
@@ -100,7 +129,7 @@ public class BlockListener implements Listener {
 
         // Durability
         int dur = Tools.getDur(is);
-        if (dur <= 0) {
+        if (tid != null && dur <= 0) {
             p.sendMessage("§cĐộ bền bằng 0, không thể khai thác");
             p.sendMessage("§cDùng Đá sửa chữa để sửa công cụ!");
             p.playSound(p.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
@@ -111,11 +140,13 @@ public class BlockListener implements Listener {
         if (m != Material.AIR) e.setCancelled(true);
 
         // Update durability
-        Tasks.async(() -> {
-            Tools.setDur(is, dur - 1);
-            Tools.updateLore(tid, is);
-            p.updateInventory();
-        });
+        if (tid != null) {
+            Tasks.async(() -> {
+                Tools.setDur(is, dur - 1);
+                Tools.updateLore(tid, is);
+                p.updateInventory();
+            });
+        }
 
         var canDrop = success;
         Tasks.sync(() -> {
@@ -132,7 +163,8 @@ public class BlockListener implements Listener {
             else drop = Configs.getMaterial(type);
 
             String name = new ItemStackManager(drop).getName();
-            Item i = p.getWorld().dropItemNaturally(b.getLocation().add(0.5, 0.5, 0.5), drop);
+            Item i = p.getWorld().dropItem(getDropLocation(p, b.getLocation()), drop);
+            i.setVelocity(p.getLocation().subtract(i.getLocation()).toVector().normalize().multiply(0.1));
             if (name != null) {
                 i.setCustomName(name);
                 i.setCustomNameVisible(true);
@@ -167,6 +199,20 @@ public class BlockListener implements Listener {
         double rate = chance * 100;
         int random = new Random().nextInt(10000);
         return random < rate;
+    }
+
+    public static Location getDropLocation(Player player, Location l) {
+        var center = l.getBlock().getLocation().clone().add(0.5, 0.5, 0.5);
+        if (player.getLocation().getBlockX() == center.getBlockX()) {
+            var d = player.getLocation().getZ() - center.getZ();
+            center.setZ(center.getZ() + (d / Math.abs(d)) * 0.7);
+        }
+        else {
+            var d = player.getLocation().getX() - center.getX();
+            center.setX(center.getX() + (d / Math.abs(d)) * 0.7);
+        }
+
+        return center;
     }
 
 }

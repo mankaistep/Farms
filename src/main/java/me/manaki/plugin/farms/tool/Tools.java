@@ -62,6 +62,7 @@ public class Tools {
     }
 
     public static boolean isRightTool(String id, Material m) {
+        if (Configs.getTool(id) == null) return false;
         return Configs.getTool(id).getBlocks().contains(m.name());
     }
 

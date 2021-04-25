@@ -1,4 +1,15 @@
+farm-restrict:
+  world_tutorial:
+    WHEAT: '15-300'
+    COAL_ORE: '15-300'
+    OAK_LOG: '15-300'
+    OAK_WOOD: '15-300'
+
 respawn-seconds: 5
+respawn-specific-worlds:
+  world_tutorial: 10
+  world_forest_1: 300
+  world_mine_1: 300
 
 allow-worlds:
   - world_skyblock
