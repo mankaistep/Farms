@@ -3,6 +3,7 @@ package me.manaki.plugin.farms.config;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import me.manaki.plugin.farms.restrict.Restrict;
 import me.manaki.plugin.farms.tool.Tool;
 import me.manaki.plugin.farms.tool.Tools;
 import me.manaki.plugin.shops.storage.ItemStorage;
@@ -25,6 +26,7 @@ public class Configs {
 
     private static List<String> ALLOW_WORLDS = Lists.newArrayList();
     private static List<String> RESPAWN_WORLDS = Lists.newArrayList();
+    private static Map<String, Integer> RESPAWN_SPECIFIC_WORLDS = Maps.newHashMap();
     private static List<String> RESPAWNS = Lists.newArrayList();
 
     private final static Map<String, String> TRANS = Maps.newHashMap();
@@ -33,6 +35,7 @@ public class Configs {
     private final static Map<String, Tool> TOOLS = Maps.newHashMap();
     private final static Map<String, String> RARE_MATERIALS = Maps.newHashMap();
     private final static Map<String, List<String>> SPECIFIC_WORLDS = Maps.newHashMap();
+    private final static Map<String, List<Restrict>> FARM_RESTRICTS = Maps.newHashMap();
 
 
     public static void reload(FileConfiguration config) {
@@ -92,6 +95,24 @@ public class Configs {
         for (String world : config.getConfigurationSection("specific-worlds").getKeys(false)) {
             List<String> list = config.getStringList("specific-worlds." + world);
             SPECIFIC_WORLDS.put(world, list);
+        }
+
+        // Specific spawn worlds
+        RESPAWN_SPECIFIC_WORLDS.clear();;
+        for (String world : config.getConfigurationSection("respawn-specific-worlds").getKeys(false)) {
+            RESPAWN_SPECIFIC_WORLDS.put(world, config.getInt("respawn-specific-worlds." + world));
+        }
+
+        // Restrict
+        FARM_RESTRICTS.clear();
+        for (String world : config.getConfigurationSection("farm-restrict").getKeys(false)) {
+            List<Restrict> l = Lists.newArrayList();
+            for (String block : config.getConfigurationSection("farm-restrict." + world).getKeys(false)) {
+                int amount = Integer.parseInt(config.getString("farm-restrict." + world + "." + block).split("-")[0]);
+                int seconds = Integer.parseInt(config.getString("farm-restrict." + world + "." + block).split("-")[1]);
+                l.add(new Restrict(block, amount, seconds));
+            }
+            FARM_RESTRICTS.put(world, l);
         }
     }
 
@@ -159,4 +180,11 @@ public class Configs {
         return RESPAWN_WORLDS.contains(w);
     }
 
+    public static int getRespawnTime(String world) {
+        return RESPAWN_SPECIFIC_WORLDS.getOrDefault(world, RESPAWN_SECONDS);
+    }
+
+    public static Map<String, List<Restrict>> getFarmRestricts() {
+        return FARM_RESTRICTS;
+    }
 }

@@ -42,36 +42,45 @@ public class Histories {
         }
 
         config = YamlConfiguration.loadConfiguration(file);
-        histories.clear();
-        for (String s : config.getStringList("blocks")) {
-            histories.add(BlockHistory.parse(s));
+
+        synchronized (histories) {
+            histories.clear();
+            for (String s : config.getStringList("blocks")) {
+                histories.add(BlockHistory.parse(s));
+            }
         }
     }
 
     public static void checkAll() {
-        for (BlockHistory h : Lists.newArrayList(histories)) {
-            if (h.getExpire() < System.currentTimeMillis()) {
-                Location l = h.getLocation().toLocation();
-                histories.remove(h);
-                Tasks.sync(() -> {
-                    l.getBlock().setType(h.getType());
-                });
-                change = true;
+        synchronized (histories) {
+            for (BlockHistory h : Lists.newArrayList(histories)) {
+                if (h.getExpire() < System.currentTimeMillis()) {
+                    Location l = h.getLocation().toLocation();
+                    histories.remove(h);
+                    Tasks.sync(() -> {
+                        l.getBlock().setType(h.getType());
+                    });
+                    change = true;
+                }
             }
-        }
-        if (change) {
-            write();
-            change = false;
+            if (change) {
+                write();
+                change = false;
+            }
         }
     }
 
     public static void add(BlockHistory h) {
-        histories.add(h);
+        synchronized (histories) {
+            histories.add(h);
+        }
         change = true;
     }
 
     public static void write() {
-        config.set("blocks", histories.stream().map(hb -> hb.toString()).collect(Collectors.toList()));
+        synchronized (histories) {
+            config.set("blocks", histories.stream().map(BlockHistory::toString).collect(Collectors.toList()));
+        }
         try {
             config.save(new File(Farms.get().getDataFolder(), "blocks.yml"));
         } catch (IOException e) {
