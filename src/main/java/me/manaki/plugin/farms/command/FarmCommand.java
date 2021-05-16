@@ -3,10 +3,14 @@ package me.manaki.plugin.farms.command;
 import me.manaki.plugin.farms.Farms;
 import me.manaki.plugin.farms.config.Configs;
 import me.manaki.plugin.farms.tool.Tools;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.craftbukkit.v1_16_R3.util.CraftMagicNumbers;
 import org.bukkit.entity.Player;
+
+import java.lang.reflect.Field;
 
 public class FarmCommand implements CommandExecutor {
 
@@ -33,7 +37,6 @@ public class FarmCommand implements CommandExecutor {
 
                 player.getInventory().addItem(is);
             }
-
         }
         catch (ArrayIndexOutOfBoundsException e) {
             sendHelp(sender);

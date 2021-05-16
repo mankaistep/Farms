@@ -22,14 +22,17 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerHarvestBlockEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
+import java.util.Map;
 import java.util.Random;
 
 public class BlockListener implements Listener {
 
     /*
     1. Disable minecraft durability
-    2. Farms durablity check
+    2. Farms durability check
     3. Farm block check
      */
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -107,11 +110,13 @@ public class BlockListener implements Listener {
         e.setCancelled(true);
 
         // Update durability
-        Tasks.async(() -> {
-            Tools.setDur(is, dur - 1);
-            Tools.updateLore(tid, is);
-            p.updateInventory();
-        });
+        if (is.getType() != Material.AIR) {
+            Tasks.async(() -> {
+                Tools.setDur(is, dur - 1);
+                Tools.updateLore(tid, is);
+                p.updateInventory();
+            });
+        }
 
         var canDrop = success;
         Tasks.sync(() -> {
