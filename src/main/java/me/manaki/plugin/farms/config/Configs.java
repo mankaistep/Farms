@@ -172,9 +172,9 @@ public class Configs {
         return SPECIFIC_WORLDS.get(w);
     }
 
-//    public static boolean isRespawn(Material m) {
-//        return RESPAWNS.contains(m.name());
-//    }
+    public static boolean isRespawn(Material m) {
+        return RESPAWNS.contains(m.name());
+    }
 
     public static boolean isWorldRespawn(String w) {
         return RESPAWN_WORLDS.contains(w);
