@@ -12,25 +12,17 @@ import me.manaki.plugin.farms.history.BlockHistory;
 import me.manaki.plugin.farms.history.Histories;
 import me.manaki.plugin.farms.restrict.Restricts;
 import me.manaki.plugin.farms.tool.Tools;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Ageable;
-import org.bukkit.craftbukkit.v1_16_R3.block.data.CraftAgeable;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.event.player.PlayerHarvestBlockEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import java.util.Map;
 import java.util.Random;
@@ -192,7 +184,7 @@ public class BlockListener implements Listener {
         else drop = Configs.getMaterial(type);
 
         String name = new ItemStackManager(drop).getName();
-        Item i = p.getWorld().dropItemNaturally(getDropLocation(p, b), drop);
+        Item i = p.getWorld().dropItem(getDropLocation(p, b), drop);
         if (name != null) {
             i.setCustomName(name);
             i.setCustomNameVisible(true);
@@ -230,10 +222,8 @@ public class BlockListener implements Listener {
 
     public static Location getDropLocation(Player player, Block b) {
         var center = b.getLocation().add(0.5, 0.5, 0.5);
-        var bonusx = cal(player.getLocation().getX() - center.getX());
-        var bonusy = cal(player.getLocation().getY() - center.getY());
-        var bonusz = cal(player.getLocation().getZ() - center.getZ());
-        return center.add(bonusx, bonusy, bonusz);
+        var r = center.add(player.getLocation().subtract(center).toVector().normalize().multiply(1.5f).toLocation(player.getWorld()));
+        return r;
     }
 
     private static double cal(double value) {
