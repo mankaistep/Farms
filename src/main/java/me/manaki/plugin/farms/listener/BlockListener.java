@@ -82,9 +82,6 @@ public class BlockListener implements Listener {
         }
         boolean success = true;
 
-        // Remove drop
-        e.setDropItems(false);
-
         // Check age
         if (b.getType() != Material.SUGAR_CANE && b.getType() != Material.CACTUS && b.getBlockData() instanceof Ageable) {
             var ab = (Ageable) b.getBlockData();
