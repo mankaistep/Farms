@@ -94,7 +94,7 @@ public class BlockListener implements Listener {
         // Crop break count
         if (success && (b.getType() == Material.SUGAR_CANE || b.getType() == Material.CACTUS || b.getBlockData() instanceof Ageable)) {
             int count = cropBreakCounts.getOrDefault(b, 1);
-            if (count != MAX_BREAK_COUNT) {
+            if (count < MAX_BREAK_COUNT) {
                 int percent = count * 100 / MAX_BREAK_COUNT;
                 p.sendActionBar("§e§lKhai thác " + Configs.getTrans(b.getType()) + ": §6§l" + percent + "%");
                 if (b.getType() == Material.CACTUS) count += 5;
