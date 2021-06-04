@@ -130,8 +130,7 @@ public class BlockListener implements Listener {
         // Durability
         int dur = Tools.getDur(is);
         if (success && dur <= 0) {
-            p.sendMessage("§cĐộ bền bằng 0, không thể khai thác");
-            p.sendMessage("§cDùng Đá sửa chữa để sửa công cụ!");
+            p.sendMessage("§cĐộ bền bằng 0, không thể khai thác");;
             p.playSound(p.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
             success = false;
         }
