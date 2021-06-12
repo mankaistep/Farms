@@ -218,7 +218,10 @@ public class BlockListener implements Listener {
 
     public static Location getDropLocation(Player player, Block b) {
         var center = b.getLocation().add(0.5, 0.5, 0.5);
-        var r = center.add(player.getLocation().subtract(center).toVector().normalize().multiply(1.5f).toLocation(player.getWorld()));
+        var r = center.add(player.getLocation().add(0, 1, 0).subtract(center).toVector().normalize().multiply(1.5f).toLocation(player.getWorld()));
+//        if (r.distanceSquared(center) > player.getLocation().distanceSquared(center)) {
+//            return player.getLocation().add(player.getLocation().getDirection().multiply(0.2f)).add(0, 1, 0);
+//        }
         return r;
     }
 
