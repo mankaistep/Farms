@@ -150,8 +150,9 @@ public class BlockListener implements Listener {
 
         // Save if world is claimed
         if (Configs.isWorldRespawn(p.getWorld().getName()) && Configs.isRespawn(b.getType())) {
+            var time = Configs.getRespawnTime(p.getWorld().getName());
             Tasks.async(() -> {
-                Histories.add(new BlockHistory(type, new BLocation(b.getWorld().getName(), b.getX(), b.getY(), b.getZ()), System.currentTimeMillis() + Configs.RESPAWN_SECONDS * 1000));
+                Histories.add(new BlockHistory(type, new BLocation(b.getWorld().getName(), b.getX(), b.getY(), b.getZ()), System.currentTimeMillis() + time * 1000L));
             });
         }
 
