@@ -12,7 +12,10 @@ import me.manaki.plugin.farms.history.BlockHistory;
 import me.manaki.plugin.farms.history.Histories;
 import me.manaki.plugin.farms.restrict.Restricts;
 import me.manaki.plugin.farms.tool.Tools;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Ageable;
 import org.bukkit.entity.Item;
@@ -86,19 +89,19 @@ public class BlockListener implements Listener {
         if (b.getType() != Material.SUGAR_CANE && b.getType() != Material.CACTUS && b.getBlockData() instanceof Ageable) {
             var ab = (Ageable) b.getBlockData();
             if (ab.getAge() < ab.getMaximumAge()) {
-//                p.sendMessage("§cChỉ có thể khai thác khi cây lớn tối đa");
                 success = false;
             }
         }
 
         // Crop break count
         if (success && (b.getType() == Material.SUGAR_CANE || b.getType() == Material.CACTUS || b.getBlockData() instanceof Ageable)) {
-            int count = cropBreakCounts.getOrDefault(b, 1);
+            int count = cropBreakCounts.getOrDefault(b, 0);
+            if (b.getType() == Material.CACTUS) count += 20;
+            else count++;
             if (count < MAX_BREAK_COUNT) {
                 int percent = count * 100 / MAX_BREAK_COUNT;
                 p.sendActionBar("§e§lKhai thác " + Configs.getTrans(b.getType()) + ": §6§l" + percent + "%");
-                if (b.getType() == Material.CACTUS) count += 5;
-                else count++;
+
                 cropBreakCounts.put(b, count);
                 e.setCancelled(true);
                 return;
