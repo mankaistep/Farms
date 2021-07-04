@@ -46,6 +46,7 @@ public class ItemStackManager {
     }
 
     public String getName() {
+        if (isNull()) return null;
         if (hasDisplayName()) return meta.getDisplayName();
         return is.getType().name();
     }
