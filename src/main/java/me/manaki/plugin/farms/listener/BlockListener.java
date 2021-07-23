@@ -183,6 +183,8 @@ public class BlockListener implements Listener {
         }
         else drop = Configs.getMaterial(type);
 
+        if (drop == null) return;
+
         String name = new ItemStackManager(drop).getName();
         Item i = p.getWorld().dropItem(getDropLocation(p, b), drop);
         if (name != null) {
