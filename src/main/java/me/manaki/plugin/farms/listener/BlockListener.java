@@ -1,9 +1,7 @@
 package me.manaki.plugin.farms.listener;
 
-import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import me.manaki.plugin.farms.Farms;
-import me.manaki.plugin.farms.ItemStackManager;
 import me.manaki.plugin.farms.Tasks;
 import me.manaki.plugin.farms.config.Configs;
 import me.manaki.plugin.farms.event.PlayerFarmHarvestEvent;
@@ -17,17 +15,15 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
-import org.bukkit.block.data.Ageable;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.ItemSpawnEvent;
 import org.bukkit.event.player.PlayerHarvestBlockEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -35,20 +31,10 @@ public class BlockListener implements Listener {
 
     private final Set<Block> pendings;
 
-    private final int MAX_BREAK_COUNT = 20;
-    private final Map<Block, Integer> cropBreakCounts;
-
-
     public BlockListener() {
         this.pendings = Sets.newHashSet();
-        this.cropBreakCounts = Maps.newHashMap();
     }
 
-    /*
-    1. Disable minecraft durability
-    2. Farms durability check
-    3. Farm block check
-     */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onBreak(BlockBreakEvent e) {
         // Check world
@@ -59,6 +45,15 @@ public class BlockListener implements Listener {
         Block b = e.getBlock();
         Material type = b.getType();
 
+        // Type check
+        if (!Configs.getALlBlockTypes().contains(type.name())) return;
+
+        // Hook check
+        if (Farms.get().getHook() != null && !Farms.get().getHook().canExploit(b, p)) {
+            p.sendMessage("§cKhông thể khai thác ở đây!");
+            return;
+        }
+
         // Pending
         if (pendings.contains(b)) {
             e.setCancelled(true);
@@ -66,68 +61,47 @@ public class BlockListener implements Listener {
         }
 
         // History
-        if (Histories.inWaiting(b)) {
+        else if (Histories.inWaiting(b)) {
             e.setCancelled(true);
             return;
         }
 
-        if (!Configs.getALlBlockTypes().contains(type.name())) return;
-        if (Configs.getFarmRestricts().containsKey(p.getWorld().getName()) && !p.hasPermission("farms.admin") && Restricts.isInCooldown(p, type.name())) {
+        else if (Configs.getFarmRestricts().containsKey(p.getWorld().getName()) && !p.hasPermission("farms.admin") && Restricts.isInCooldown(p, type.name())) {
             p.sendMessage("§cĐợi " + Restricts.getSecondRemain(p, type.name()) + " giây để khai thác tiếp");
             e.setCancelled(true);
             return;
         }
 
-        // Check hook
-        if (Farms.get().getHook() != null && !Farms.get().getHook().canExploit(b, p)) {
-            p.sendMessage("§cKhông thể khai thác ở đây!");
-            return;
-        }
         boolean success = true;
-
-        // Check age
-        if (b.getType() != Material.SUGAR_CANE && b.getType() != Material.CACTUS && b.getBlockData() instanceof Ageable) {
-            var ab = (Ageable) b.getBlockData();
-            if (ab.getAge() < ab.getMaximumAge()) {
-                success = false;
-            }
-        }
-
-        // Crop break count
-        if (success && (b.getType() == Material.SUGAR_CANE || b.getType() == Material.CACTUS || b.getBlockData() instanceof Ageable)) {
-            int count = cropBreakCounts.getOrDefault(b, 0);
-            if (b.getType() == Material.CACTUS) count += 20;
-            else count++;
-            if (count < MAX_BREAK_COUNT) {
-                int percent = count * 100 / MAX_BREAK_COUNT;
-                p.sendActionBar("§e§lKhai thác " + Configs.getTrans(b.getType()) + ": §6§l" + percent + "%");
-
-                cropBreakCounts.put(b, count);
-                e.setCancelled(true);
-                return;
-            }
-            p.sendActionBar("§e§lKhai thác thành công");
-            cropBreakCounts.remove(b);
-        }
 
         // Check item
         ItemStack is = p.getInventory().getItemInMainHand();
         String tid = Tools.read(is);
-        if (success && (is.getType() == Material.AIR || tid == null)) {
-            p.sendMessage("§cPhải dùng công cụ để có thể thu hoạch/khai thác khối này!");
-            success = false;
-        }
 
-        // Check specific world
-        if (Configs.isSpecificWorld(p.getWorld().getName())) {
-            var tools = Configs.getTools(p.getWorld().getName());
-            if (!tools.contains(tid)) return;
+        // Type check
+        if (is.getType() == Material.AIR || tid == null) {
+            if (!p.isSneaking()) {
+                p.sendMessage("§cPhải dùng công cụ để có thể thu hoạch/khai thác khối này!");
+                p.sendMessage("§c§lGiữ shift lúc phá để phá block (sẽ không rơi ra gì)");
+                e.setCancelled(true);
+                return;
+            }
+            else {
+                p.sendMessage("§c§lGiữ shift lúc phá để phá block (sẽ không rơi ra gì)");
+            }
+            success = false;
         }
 
         // Check tool
         if (success && !Tools.isRightTool(tid, type)) {
             p.sendMessage("§cKhông đúng loại công cụ!");
             success = false;
+        }
+
+        // World check
+        if (Configs.isSpecificWorld(p.getWorld().getName())) {
+            var tools = Configs.getTools(p.getWorld().getName());
+            if (!tools.contains(tid)) return;
         }
 
         // Durability
@@ -137,8 +111,6 @@ public class BlockListener implements Listener {
             p.playSound(p.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
             success = false;
         }
-
-        e.setCancelled(true);
 
         // Update durability
         if (success && is.getType() != Material.AIR && tid != null) {
@@ -152,49 +124,43 @@ public class BlockListener implements Listener {
         var canDrop = success;
 
         // Save if world is claimed
-        if (Configs.isWorldRespawn(p.getWorld().getName()) && Configs.isRespawn(b.getType())) {
+        if (Configs.isWorldRespawn(p.getWorld().getName())) {
             var time = Configs.getRespawnTime(p.getWorld().getName());
             Tasks.async(() -> {
                 Histories.add(new BlockHistory(type, new BLocation(b.getWorld().getName(), b.getX(), b.getY(), b.getZ()), System.currentTimeMillis() + time * 1000L));
             });
         }
 
-        // Set and save
-        if (b.getType() != Material.SUGAR_CANE && b.getType() != Material.CACTUS && b.getBlockData() instanceof Ageable) {
-            pendings.add(b);
-            Bukkit.getScheduler().runTask(Farms.get(), () -> {
-                var ab = (Ageable) b.getBlockData();
-                ab.setAge(1);
-                b.setBlockData(ab);
-                pendings.remove(b);
-            });
-        }
-        else {
-            Material m = Configs.getDefault(type);
-            b.setType(m);
-        }
-
         // Drop
         if (!canDrop) return;
 
-        ItemStack drop = null;
-        if (rate(Configs.RARE_MATERIAL_CHANCE)) {
-            drop = Configs.getRareMaterial(type);
-        }
-        else drop = Configs.getMaterial(type);
-
-        if (drop == null) return;
-
-        String name = new ItemStackManager(drop).getName();
-        Item i = p.getWorld().dropItem(getDropLocation(p, b), drop);
-        if (name != null) {
-            i.setCustomName(name);
-            i.setCustomNameVisible(true);
-        }
+        Tasks.sync(() -> {
+            if (e.isCancelled()) {
+                b.breakNaturally();
+                if (type.name().contains("ORE") || type == Material.STONE) {
+                    Tasks.sync(() -> {
+                        b.setType(Material.COBBLESTONE);
+                    }, 10);
+                }
+            }
+        });
 
         // Event
         Bukkit.getPluginManager().callEvent(new PlayerFarmHarvestEvent(p, type.name()));
         Restricts.add(p, type.name(), 1);
+    }
+
+    /*
+    Convert log to wood
+     */
+    @EventHandler
+    public void onPlayerPickup(ItemSpawnEvent e) {
+        var drop = e.getEntity();
+        var type = drop.getItemStack().getType();
+        if (type.name().contains("LOG")) {
+            var newtype = Material.valueOf(type.name().replace("_LOG", "_WOOD"));
+            drop.getItemStack().setType(newtype);
+        }
     }
 
     /*

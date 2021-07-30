@@ -60,6 +60,8 @@ public class Tools {
             String id = read(is);
             assert id != null : "[Farms] NULL item can't has durability stat!";
             ItemMeta meta = is.getItemMeta();
+            meta.setUnbreakable(true);
+            meta.addItemFlags(ItemFlag.HIDE_UNBREAKABLE);
             meta.getPersistentDataContainer().set(getDurKey(), PersistentDataType.INTEGER, dur);
             is.setItemMeta(meta);
         }
