@@ -1,6 +1,5 @@
 package me.manaki.plugin.farms.listener;
 
-import me.manaki.plugin.farms.config.Configs;
 import me.manaki.plugin.farms.tool.Tools;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -9,6 +8,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.meta.Damageable;
 
 public class FixListener implements Listener {
 
@@ -22,8 +22,6 @@ public class FixListener implements Listener {
         if (current == null) return;
         if (!Tools.isFixItem(cursor)) return;
 
-        var tid = Tools.read(current);
-        if (tid == null) return;
         e.setCancelled(true);
 
         if (e.getClickedInventory() == null || e.getClickedInventory().getType() != InventoryType.PLAYER) {
@@ -31,14 +29,19 @@ public class FixListener implements Listener {
             return;
         }
 
-        var t = Configs.getTool(tid);
-        var newdur = Math.min(t.getDurability(), Configs.FIX_BONUS + Tools.getDur(current));
-        Tools.setDur(current, newdur);
-        Tools.updateLore(tid, current);
+        var meta = current.getItemMeta();
+        if (meta instanceof Damageable) {
+            ((Damageable) meta).setDamage(0);
+            current.setItemMeta(meta);
+        }
+        else {
+            p.sendMessage("§cKhông thể sửa chữa đồ này");
+            return;
+        }
 
         cursor.setAmount(cursor.getAmount() - 1);
 
-        p.sendMessage("§aSử dụng Đá sửa chữa thành công! Tăng " + Configs.FIX_BONUS + " điểm độ bền");
+        p.sendMessage("§aSử dụng Đá sửa chữa thành công!");
         p.playSound(p.getLocation(), Sound.BLOCK_ANVIL_PLACE, 1, 1);
     }
 
