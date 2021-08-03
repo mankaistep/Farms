@@ -11,6 +11,7 @@ import me.manaki.plugin.farms.history.Histories;
 import me.manaki.plugin.farms.restrict.Restricts;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,6 +19,9 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Set;
 
@@ -76,7 +80,33 @@ public class BlockListener implements Listener {
 
         Tasks.sync(() -> {
             if (e.isCancelled()) {
-                b.breakNaturally();
+                if (b.getType() == Material.REDSTONE_ORE) {
+                    b.setType(Material.AIR);
+                    b.getLocation().getWorld().dropItemNaturally(b.getLocation().clone().add(0.5, 0.5, 0.5), new ItemStack(Material.REDSTONE));
+                }
+                else if (b.getType() == Material.LAPIS_ORE) {
+                    b.setType(Material.AIR);
+                    b.getLocation().getWorld().dropItemNaturally(b.getLocation().clone().add(0.5, 0.5, 0.5), new ItemStack(Material.LAPIS_LAZULI));
+                }
+                else b.breakNaturally();
+
+                // Subtract durability
+                Tasks.sync(() -> {
+                    var is = e.getPlayer().getInventory().getItemInMainHand();
+                    if (is.getItemMeta() instanceof Damageable) {
+                        var meta = (Damageable) is.getItemMeta();
+                        if (meta.getDamage() >= is.getType().getMaxDurability()) {
+                            p.getInventory().setItemInMainHand(null);
+                            p.updateInventory();
+                            p.playSound(p.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
+                        }
+                        else {
+                            meta.setDamage(meta.getDamage() + 1);
+                            is.setItemMeta((ItemMeta) meta);
+                        }
+                    }
+                });
+
                 if (type.name().contains("ORE") || type == Material.STONE) {
                     Tasks.sync(() -> {
                         b.setType(Material.COBBLESTONE);
@@ -100,6 +130,12 @@ public class BlockListener implements Listener {
         if (type.name().contains("LOG")) {
             var newtype = Material.valueOf(type.name().replace("_LOG", "_WOOD"));
             drop.getItemStack().setType(newtype);
+        }
+        else if (type.name().equals("IRON_ORE")) {
+            drop.getItemStack().setType(Material.IRON_INGOT);
+        }
+        else if (type.name().equals("GOLD_ORE")) {
+            drop.getItemStack().setType(Material.GOLD_INGOT);
         }
     }
 
